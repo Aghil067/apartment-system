@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #f9f9f9;
+            color: #333;
+            width: 95%;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #2575fc;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .status-card {
+            background: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: box-shadow 0.3s, transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .status-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #2575fc;
+        }
+
+        .status-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #2575fc;
+        }
+
+        .modal-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .close-btn {
+            background: #6a11cb;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #2575fc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Service Requests</h1>
+        </div>
+        <div class="content">
+            <h2>Raise Service Requests for:</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Cleaning</h3>
+                </div>
+                <div class="service">
+                    <h3>Plumbing</h3>
+                </div>
+                <div class="service">
+                    <h3>Electrical Issues</h3>
+                </div>
+            </div>
+            <h2>Track Your Request Status:</h2>
+            <div class="status">
+                <div class="status-card" onclick="showModal('Pending', 'Requests that are awaiting processing.')">
+                    <h3>Pending</h3>
+                    <p>Click to view details</p>
+                </div>
+                <div class="status-card" onclick="showModal('In Progress', 'Requests that are currently being addressed.')">
+                    <h3>In Progress</h3>
+                    <p>Click to view details</p>
+                </div>
+                <div class="status-card" onclick="showModal('Resolved', 'Requests that have been completed successfully.')">
+                    <h3>Resolved</h3>
+                    <p>Click to view details</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal" id="statusModal">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('statusModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('statusModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
