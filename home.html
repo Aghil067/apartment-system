@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apartment Management - Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Apartment Admin</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#house-details" class="active"><i class="fas fa-home"></i> House Details</a></li>
+        <li><a href="#payment-status"><i class="fas fa-money-bill"></i> Payment Status</a></li>
+        <li><a href="#worker-management"><i class="fas fa-tools"></i> Worker Management</a></li>
+        <li><a href="#maintenance-requests"><i class="fas fa-wrench"></i> Maintenance Requests</a></li>
+        <li><a href="#visitor-logs"><i class="fas fa-users"></i> Visitor Logs</a></li>
+        <li><a href="#community-announcements"><i class="fas fa-bullhorn"></i> Community Announcements</a></li>
+        <li><a href="#notifications"><i class="fas fa-bell"></i> Notifications</a></li>
+        <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- House Details Section -->
+    <section id="house-details" class="page active">
+      <h2><i class="fas fa-home"></i> House Details</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by Apartment No. or Resident Name..." id="search-house">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Apartment No.</th>
+            <th>Resident Name</th>
+            <th>Contact Info</th>
+            <th>Move-in Date</th>
+            <th>Lease Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="house-details-body">
+          <!-- Data will be populated by JavaScript -->
+        </tbody>
+      </table>
+      <button class="add-button"><i class="fas fa-plus"></i> Add New Resident</button>
+    </section>
+
+    <!-- Payment Status Section -->
+    <section id="payment-status" class="page">
+      <h2><i class="fas fa-money-bill"></i> Payment Status</h2>
+      <div class="filters">
+        <select id="filter-payment">
+          <option value="all">All</option>
+          <option value="paid">Paid</option>
+          <option value="pending">Pending</option>
+          <option value="overdue">Overdue</option>
+        </select>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Apartment No.</th>
+            <th>Resident Name</th>
+            <th>Rent Status</th>
+            <th>Electric Bill Status</th>
+            <th>Maintenance Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="payment-status-body">
+          <!-- Data will be populated by JavaScript -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Worker Management Section -->
+    <section id="worker-management" class="page">
+      <h2><i class="fas fa-tools"></i> Worker Management</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by Worker Name or Job Title..." id="search-worker">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Worker Name</th>
+            <th>Job Title</th>
+            <th>Contact Info</th>
+            <th>Assigned Tasks</th>
+            <th>Task Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="worker-management-body">
+          <!-- Data will be populated by JavaScript -->
+        </tbody>
+      </table>
+      <button class="add-button"><i class="fas fa-plus"></i> Add New Worker</button>
+    </section>
+
+    <!-- Maintenance Requests Section -->
+    <section id="maintenance-requests" class="page">
+      <h2><i class="fas fa-wrench"></i> Maintenance Requests</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by Apartment No. or Issue..." id="search-maintenance">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Apartment No.</th>
+            <th>Resident Name</th>
+            <th>Issue Description</th>
+            <th>Request Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="maintenance-requests-body">
+          <!-- Data will be populated by JavaScript -->
+        </tbody>
+      </table>
+      <button class="add-button"><i class="fas fa-plus"></i> Add New Request</button>
+    </section>
+
+    <!-- Visitor Logs Section -->
+    <section id="visitor-logs" class="page">
+      <h2><i class="fas fa-users"></i> Visitor Logs</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by Visitor Name or Apartment No...." id="search-visitor">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Visitor Name</th>
+            <th>Apartment No.</th>
+            <th>Resident Name</th>
+            <th>Check-in Time</th>
+            <th>Check-out Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="visitor-logs-body">
+          <!-- Data will be populated by JavaScript -->
+        </tbody>
+      </table>
+      <button class="add-button"><i class="fas fa-plus"></i> Add New Visitor</button>
+    </section>
+
+    <!-- Community Announcements Section -->
+    <section id="community-announcements" class="page">
+      <h2><i class="fas fa-bullhorn"></i> Community Announcements</h2>
+      <div class="announcements-list">
+        <div class="announcement">
+          <h3>Upcoming Maintenance</h3>
+          <p>There will be a water supply shutdown on <strong>October 15, 2023</strong> from 10 AM to 4 PM for maintenance work. Please plan accordingly.</p>
+          <small>Posted on: October 10, 2023</small>
+        </div>
+        <div class="announcement">
+          <h3>Diwali Celebration</h3>
+          <p>Join us for the Diwali celebration in the community hall on <strong>October 22, 2023</strong> at 7 PM. There will be music, food, and fireworks!</p>
+          <small>Posted on: October 5, 2023</small>
+        </div>
+      </div>
+      <button class="add-button"><i class="fas fa-plus"></i> Add New Announcement</button>
+    </section>
+
+    <!-- Notifications Section -->
+    <section id="notifications" class="page">
+      <h2><i class="fas fa-bell"></i> Notifications</h2>
+      <div class="notifications-list">
+        <div class="notification">
+          <p><strong>New Payment Received:</strong> Apartment 101 - Rent Paid</p>
+          <small>2 hours ago</small>
+        </div>
+        <div class="notification">
+          <p><strong>Task Completed:</strong> Mike fixed lights in Apartment 102</p>
+          <small>1 day ago</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settings" class="page">
+      <h2><i class="fas fa-cog"></i> Settings</h2>
+      <form>
+        <label for="admin-email">Admin Email:</label>
+        <input type="email" id="admin-email" placeholder="Enter your email">
+        <label for="admin-password">Admin Password:</label>
+        <input type="password" id="admin-password" placeholder="Enter new password">
+        <button type="submit">Save Changes</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

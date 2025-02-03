@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Management - Apartment Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Apartment Management System</h1>
+    <nav>
+      <a href="index.html">House Details</a>
+      <a href="payment.html">Payment Status</a>
+      <a href="workers.html">Worker Management</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Worker Management</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Worker Name</th>
+          <th>Job Title</th>
+          <th>Contact Info</th>
+          <th>Assigned Tasks</th>
+          <th>Task Status</th>
+        </tr>
+      </thead>
+      <tbody id="worker-management-body">
+        <!-- Data will be populated by JavaScript -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Populate worker management
+    const workerManagementBody = document.getElementById('worker-management-body');
+    workers.forEach(worker => {
+      const row = `
+        <tr>
+          <td>${worker.workerName}</td>
+          <td>${worker.jobTitle}</td>
+          <td>${worker.contactInfo}</td>
+          <td>${worker.assignedTasks}</td>
+          <td>${worker.taskStatus}</td>
+        </tr>
+      `;
+      workerManagementBody.innerHTML += row;
+    });
+  </script>
+</body>
+</html>

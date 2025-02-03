@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Status - Apartment Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Apartment Management System</h1>
+    <nav>
+      <a href="index.html">House Details</a>
+      <a href="payment.html">Payment Status</a>
+      <a href="workers.html">Worker Management</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Payment Status</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Apartment No.</th>
+          <th>Resident Name</th>
+          <th>Rent Status</th>
+          <th>Electric Bill Status</th>
+          <th>Maintenance Status</th>
+        </tr>
+      </thead>
+      <tbody id="payment-status-body">
+        <!-- Data will be populated by JavaScript -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Populate payment status
+    const paymentStatusBody = document.getElementById('payment-status-body');
+    payments.forEach(payment => {
+      const row = `
+        <tr>
+          <td>${payment.apartmentNumber}</td>
+          <td>${payment.residentName}</td>
+          <td>${payment.rentStatus}</td>
+          <td>${payment.electricBillStatus}</td>
+          <td>${payment.maintenanceStatus}</td>
+        </tr>
+      `;
+      paymentStatusBody.innerHTML += row;
+    });
+  </script>
+</body>
+</html>
